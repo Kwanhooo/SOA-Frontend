@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PowerLife - 生活聚合</title>
+    <link rel="stylesheet" href="./assets/style/global.css">
+    <script src="./assets/js/middleware.js"></script>
+    <script src="./assets/js/on-ready.js"></script>
+    <script>
+        setTimeout(function () {
+            window.location.href = './modules/Index/index.html';
+        }, 10);
+    </script>
+</head>
+<body>
+<script>
+    function gotoWeather() {
+        window.location.href = './modules/Weather/weather.html';
+    }
+</script>
+<script>
+    var map = new AMap.Map('map');
+</script>
+
+<div id="app">
+    <link rel="stylesheet" href="./assets/style/top-bar.css">
+    <link rel="stylesheet" href="./assets/style/notification.css">
+    <div id="top-bar-wrapper" class="glass">
+        <div id="top-bar-title">
+            <span onclick="gotoWeather()">生活聚合</span>
+            <span id="top-bar-sub-title"></span>
+        </div>
+        <div id="top-bar-btn-wrapper">
+            <div>
+                <img src="./assets/svgs/notification.svg" onclick="toggleNotificationCenter()" class="icon pointer">
+            </div>
+            <div>
+                <img src="./assets/svgs/settings.svg" onclick="toggleSettings()" class="icon pointer">
+            </div>
+            <div>
+                <img class="avatar pointer" src="./assets/svgs/default-user-avatar.svg">
+            </div>
+        </div>
+    </div>
+    <div id="notification-center" class="glass">
+        <div class="notification-item">
+            <div class="header">
+                <div class="title">
+                    <div class="notification-icon-wrapper">
+                        <img src="./assets/image/weather.jpg" class="notification-icon">
+                    </div>
+                    <div class="title-text">天气</div>
+                </div>
+                <div class="btn">
+                    <img src="./assets/svgs/close.svg" class="icon pointer close">
+                </div>
+            </div>
+            <hr>
+            <div class="content">
+                <div>
+                    建议穿着轻薄的长袖衬衫或毛衣，加上牛仔裤或长裤。也可以考虑穿着单层的夹克或风衣来保暖。最好选择吸湿速干的面料，这样可以保持身体温暖，同时减少湿气的影响。
+                </div>
+            </div>
+        </div>
+    </div>
+    <link rel="stylesheet" href="./assets/style/settings.css">
+    <link rel="stylesheet" href="./assets/style/switch.css">
+    <script src="./assets/js/settings-context.js"></script>
+    <div id="global-mask"></div>
+    <div id="settings">
+        <div class="settings-inner">
+            <div class="settings-header">
+                <div>设定</div>
+                <div>
+                    <img onclick="toggleSettings()" src="./assets/svgs/close.svg" class="icon pointer close">
+                </div>
+            </div>
+            <div class="settings-body">
+                <div class="settings-item">
+                    <div class="item-inner">
+                        <div class="row">
+                            <div class="title">
+                                <div>
+                                    <img class="icon" src="./assets/image/weather.jpg" alt="weather">
+                                </div>
+                                <div class="title">天气订阅</div>
+                            </div>
+                            <div class="switch-wrapper">
+                                <label class="form-switch">
+                                    <input type="checkbox" id="weatherSubscription" onclick="toggleWeather()">
+                                    <i></i>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="description">
+                        此功能需付费订阅，开启后将会每天为您推送天气预报，以及AI给出的生活建议。
+                    </div>
+                </div>
+                <div class="settings-item">
+                    <div class="item-inner">
+                        <div class="row">
+                            <div class="title">
+                                <div>
+                                    <img class="icon" src="./assets/image/map.jpg" alt="weather">
+                                </div>
+                                <div class="title">定位服务</div>
+                            </div>
+                            <div class="switch-wrapper">
+                                <label class="form-switch">
+                                    <input type="checkbox" id="autoLocation" onclick="toggleAutoLocation()">
+                                    <i></i>
+                                </label>
+                            </div>
+                        </div>
+                        <hr style="height: 1px;border: 0;padding: 0;margin: 0;position: relative;left: calc(50px + 2.5rem);opacity: 0">
+                        <div class="row">
+                            <div class="title">
+                                <div style="width: calc(50px + 2.5rem)"></div>
+                                <div class="title">当前定位</div>
+                            </div>
+                            <div class="switch-wrapper">
+                                <input class="value" id="geo" onchange="onLocationChange()">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="description">
+                        开启后将会使用您的定位服务，以便为您提供更加精准的生活聚合。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

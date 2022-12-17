@@ -1,0 +1,89 @@
+#notification-center {
+    position: absolute;
+    top: 60px;
+    right: 1rem;
+    width: 25rem;
+    height: 85%;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 1.5rem;
+    display: none;
+    opacity: 0;
+    transition: opacity cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+    z-index: 99999999;
+}
+
+#notification-center * {
+    font-family: 'SourceHanSansCN', sans-serif, 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial;
+}
+
+.notification-item {
+    background: white;
+    border-radius: .75rem;
+    /*height: 10rem;*/
+    width: 23rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+    z-index: 99999;
+}
+
+.notification-item .header {
+    width: 100%;
+    height: 2.1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 1.2rem;
+}
+
+.notification-item .header .title {
+    margin-left: 1rem;
+    margin-top: .5rem;
+    font-weight: bold;
+}
+
+.notification-icon-wrapper {
+    display: inline-block;
+    transform: translateY(-.1rem);
+    margin-right: .2rem;
+}
+
+.title-text {
+    display: inline-block;
+    transform: translateY(-.65rem);
+    color: black;
+}
+
+.title-text-rebuild {
+    display: inline-block;
+    transform: translateY(.17rem);
+    color: black;
+}
+
+.notification-item .header .close {
+    margin-right: 1rem;
+    cursor: pointer;
+    width: 1.0rem;
+    height: 1.2rem;
+}
+
+.notification-item hr {
+    width: 21rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.notification-item .content {
+    color: black !important;
+    padding: 0 1rem 1rem 1rem;
+    word-break: break-all;
+}
+
+.notification-icon {
+    width: 2rem;
+    height: auto;
+}
+
+.notification-icon-rebuild {
+    width: 2rem;
+    transform: translateY(.15rem);
+    height: auto;
+}

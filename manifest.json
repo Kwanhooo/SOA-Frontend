@@ -1,7 +1,7 @@
 {
-  "name": "無名の主页",
-  "short_name": "無名の主页",
-  "description": "一个默默无闻的主页",
+  "name": "PowerLife 智能生活聚合",
+  "short_name": "PowerLife",
+  "description": "一站式，智能生活聚合平台",
   "display": "standalone",
   "start_url": "/",
   "theme_color": "#424242",

@@ -24,7 +24,7 @@ function initSettings() {
 }
 
 function renderSettings() {
-    console.log(document.getElementById("weatherSubscription"))
+    // console.log(document.getElementById("weatherSubscription"))
     if (localStorage.getItem("weatherSubscription") === "true") {
         document.getElementById("weatherSubscription").setAttribute("checked", "checked");
     } else {

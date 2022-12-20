@@ -13,12 +13,16 @@ var transfer;
 var naviMode = 'driving';
 var trafficLayerOn = true;
 var city;
+var cityCode;
 
 // 获取当前城市
 AMap.plugin('AMap.CitySearch', function () {
     var citySearch = new AMap.CitySearch()
     citySearch.getLocalCity(function (status, result) {
+        // console.log(result)
+        // cityCode = result.adcode
         city = result.city
+        showAroundType()
         AMap.plugin('AMap.Transfer', function () {
             transfer = new AMap.Transfer({
                 map: map,
@@ -28,6 +32,11 @@ AMap.plugin('AMap.CitySearch', function () {
             });
         })
     })
+})
+
+fetch('https://restapi.amap.com/v3/geocode/geocode?key=6c75d672a9a64b86f998f3fc51e25e1c&city=长沙市')
+    .then(r => r.json()).then(r => {
+    console.log(r)
 })
 
 

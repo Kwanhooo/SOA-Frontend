@@ -18,7 +18,7 @@ function go(lng, lat) {
             function (status, result) {
                 console.log('驾车路线', result)
                 if (status === 'complete') {
-                    log.success('绘制驾车路线完成', result)
+                    log.success('驾车路线规划完成', result)
                 } else {
                     log.error('获取驾车数据失败：' + result)
                 }
@@ -30,7 +30,7 @@ function go(lng, lat) {
                 console.log('公交status', status)
                 console.log('公交result', result)
                 if (status === 'complete') {
-                    log.success('绘制公交路线完成', result)
+                    log.success('公交路线规划完成', result)
                 } else {
                     log.error('公交路线数据查询失败' + result)
                 }

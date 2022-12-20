@@ -81,8 +81,10 @@
 #map-option .go-wrapper {
     /*margin-top: 1.5rem;*/
     border-radius: 1rem;
-    display: inline-flex;
-    padding: .8rem 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: .5rem .5rem;
 }
 
 #map-option .go-wrapper .go-item {
@@ -96,7 +98,7 @@
 }
 
 .go-icon {
-    width: 60%;
+    width: 4rem;
     height: auto;
     border-radius: 1rem !important;
     margin-bottom: .2rem;
@@ -109,6 +111,7 @@
     background: #2c2c2c;
     border-radius: 1rem;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .section-title {
@@ -131,6 +134,8 @@
     /*background: gray;*/
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
     background: #38393d;
     border-radius: 1rem;
     margin-left: .5rem;

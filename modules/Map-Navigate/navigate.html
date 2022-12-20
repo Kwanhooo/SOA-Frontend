@@ -22,9 +22,10 @@
             background-color: white;
             max-height: 70%;
             overflow-y: auto;
-            top: 0px;
+            top: 0;
             right: 10rem;
             width: 250px;
+            /*max-width: 400px;*/
             z-index: 9999999;
             border-radius: 1rem;
         }
@@ -199,19 +200,19 @@
             <div class="section-title">立即出发</div>
             <div class="go-wrapper light">
                 <div class="go-item">
-                    <img src="../../assets/image/code.png" class="pointer go-icon">
+                    <img src="../../assets/image/call.png" class="pointer go-icon">
                     <div>打车</div>
                 </div>
-                <div class="go-item">
-                    <img src="../../assets/image/code.png" class="pointer go-icon">
+                <div class="go-item" onclick="showAroundType()">
+                    <img src="../../assets/image/around.png" class="pointer go-icon">
                     <div>周边</div>
                 </div>
                 <div class="go-item" onclick="switchMode()">
-                    <img src="../../assets/image/code.png" class="pointer go-icon">
+                    <img src="../../assets/image/transfer.png" class="pointer go-icon" id="mode-icon">
                     <div id="mode-switch-text">公交地铁</div>
                 </div>
                 <div class="go-item" onclick="toggleTraffic()">
-                    <img src="../../assets/image/code.png" class="pointer go-icon">
+                    <img src="../../assets/image/traffic.png" class="pointer go-icon">
                     <div>路况</div>
                 </div>
             </div>
@@ -227,15 +228,16 @@
 <!------ 导航核心 ------>
 <script type="text/javascript">
     window._AMapSecurityConfig = {
-        securityJsCode: 'cb58cb59f6ad32d0a74e6dc696532499',
+        securityJsCode: 'df749a70b425312c0de1e44c9879a891',
     }
 </script>
-<script src="https://webapi.amap.com/maps?v=2.0&key=e88cf8a2b77a62d42036287e6847419b"></script>
+<script src="https://webapi.amap.com/maps?v=2.0&key=28bfdb7e5f9a27d6a9f3a4d43ead912b"></script>
 <script type="text/javascript" src="./core/init.js"></script>
 <script type="text/javascript" src="./core/traffic.js"></script>
 <script type="text/javascript" src="./core/search.js"></script>
 <script type="text/javascript" src="./core/go.js"></script>
 <script type="text/javascript" src="./core/mode-switch.js"></script>
+<script type="text/javascript" src="./core/transit.js"></script>
 <!--------------------->
 </div>
 </body>

@@ -14,13 +14,14 @@ var naviMode = 'driving';
 var trafficLayerOn = true;
 var city;
 var cityCode;
+var callingModeOn = false;
 
 // 获取当前城市
 AMap.plugin('AMap.CitySearch', function () {
     var citySearch = new AMap.CitySearch()
     citySearch.getLocalCity(function (status, result) {
         // console.log(result)
-        // cityCode = result.adcode
+        cityCode = result.adcode
         city = result.city
         showAroundType()
         AMap.plugin('AMap.Transfer', function () {
@@ -34,9 +35,24 @@ AMap.plugin('AMap.CitySearch', function () {
     })
 })
 
-fetch('https://restapi.amap.com/v3/geocode/geocode?key=6c75d672a9a64b86f998f3fc51e25e1c&city=长沙市')
-    .then(r => r.json()).then(r => {
-    console.log(r)
+// POST
+fetch('https://eolink.o.apispace.com/qhcx/common/postcode/queryCodeByAddr', {
+    method: 'POST',
+    // 跨域
+    mode: 'no-cors',
+    headers: {
+        'Access-Control-Allow-Headers': 'X-APISpace-Token,Content-Type, Content-Length, Authorization, Accept, X-Requested-With',
+        'X-APISpace-Token': 'g71s99res63uco9uv9yakferkmndp3dk',
+        'Authorization-Type': 'apikey',
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        // 允许头部
+    },
+    body: 'city=' + '广州'
+}).then(res => {
+    console.log('res', res)
+    // console.log(res)
 })
 
 

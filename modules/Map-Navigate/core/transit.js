@@ -17,9 +17,8 @@ function stationSearch() {
     });
 }
 
-/*公交站点查询返回数据解析*/
+/* 公交站点查询返回数据解析 */
 function stationSearchCallBack(searchResult) {
-    console.log('hello')
     console.log(searchResult)
     var stationArr = searchResult.stationInfo;
     var searchNum = stationArr.length;

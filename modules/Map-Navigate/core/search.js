@@ -98,7 +98,6 @@ function renderSearchResult(result) {
     let data = result.poiList.pois
     let html = ''
     for (let i = 0; i < data.length; i++) {
-        // console.log(data[i])
         let type = data[i].type.split(';')[0]
         html += `
             <div class="search-result-item">

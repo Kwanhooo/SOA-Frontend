@@ -24,7 +24,7 @@ function go(lng, lat) {
                         <div class="calling-tips">
                             <div class="title-tips">快车司机正努力赶来，请避开人群等候</div>
                             <div>
-                                请前往<span class="strong-tips">${sessionStorage.getItem('geo')}</span>上车。请戴好口罩，保持安全距离，健康出行。
+                                请前往<span class="strong-tips">${sessionStorage.getItem('address')}</span>上车。请戴好口罩，保持安全距离，健康出行。
                             </div>
                         </div>
                         <div class="calling-details">

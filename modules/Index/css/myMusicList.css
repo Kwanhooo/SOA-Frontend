@@ -1,0 +1,124 @@
+.myMusic-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.myMusic-item-index {
+    font-size: 16px;
+}
+
+.myMusic-item-title,
+.myMusic-item-content {
+    font-size: 12px;
+}
+
+.myMusic-item-score {
+    color: #dadada;
+    font-size: 7px!important;
+}
+
+.myMusic-list {
+    margin-top: 15px;
+}
+
+.myMusic-item-before {
+    display: flex;
+}
+
+/* .myMusic-list-item {
+    display: flex;
+    padding: 0 15px;
+    justify-content: space-between;
+    height: 32px;
+    line-height: 32px;
+    
+} */
+
+.myMusic-item-index {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.myMusic-item-title {
+    margin-right: 7px;
+}
+
+.recommand-list {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    /* -webkit-flex-wrap: wrap; */
+}
+
+
+.recommand-item {
+    display: flex;
+    /* flex: 1 1 0%; */
+    width: 31.3%;
+    flex-direction: column;
+    align-items: center;
+    /* overflow: hidden; */
+    border-radius: 5px;
+}
+
+.recommand-item:hover {
+    background-color: rgba(255,255,255,0.5);
+    cursor: pointer;
+}
+
+.rec-picture {
+    text-align: center;
+    font-size: 0;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.rec-pic {
+    width: 80%;
+}
+
+.recommand-item .recommand-word {
+    position: relative;
+    width: 80%;
+    height: 30px;
+    font-size: 12px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.recommand-word span {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    height: 100%;
+}
+
+/* 定义第一个span的animation：时长 动画名字 匀速 循环 正常播放 */
+.recommand-word-text-1 {
+    -webkit-animation: 10s first-marquee linear infinite normal;
+    animation: 10s first-marquee linear infinite normal;
+    /* padding-right: 70%; */
+    padding-right: 20px;
+}
+
+@keyframes first-marquee {
+    0% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+        -webkit-transform: translate3d(-200%, 0, 0);
+        transform: translate3d(-200%, 0, 0);
+        display: none;
+    }
+}
+
+.recommand-word-text-2 {
+    /* 因为要在第一个span播完之前就得出现第二个span，所以就延迟12s才播放 */
+    -webkit-animation: 10s first-marquee linear 5s infinite normal;
+    animation: 10s first-marquee linear 5s infinite normal;
+    /* padding-right: 53%; */
+    padding-right: 20px;
+}
+

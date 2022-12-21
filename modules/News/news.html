@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>查看新闻</title>
+
+    <!-- <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-y/jquery/3.5.1/jquery.min.js"></script> -->
+
+    <link rel="stylesheet" href="../../assets/style/global.css">
+    <link rel="stylesheet" type="text/css" href="./news.css">
+
+    <!-- <style type="text/css">
+        body {
+            background-color: #326696;
+            margin: 0px;
+            overflow: hidden;
+            /* font-family: Monospace; */
+            font-size: 13px;
+            text-align: center;
+            font-weight: bold;
+            text-align: center;
+        }
+        /* a {
+            color:#0078ff;
+        } */
+    </style> -->
+</head>
+<body>
+    <script type="text/javascript" src="../../assets/js/three.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/Detector.js"></script>
+    <script id="vs" type="x-shader/x-vertex">
+
+        varying vec2 vUv;
+
+        void main() {
+
+            vUv = uv;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+
+        }
+
+    </script>
+
+    <script id="fs" type="x-shader/x-fragment">
+
+        uniform sampler2D map;
+
+        uniform vec3 fogColor;
+        uniform float fogNear;
+        uniform float fogFar;
+
+        varying vec2 vUv;
+
+        void main() {
+
+            float depth = gl_FragCoord.z / gl_FragCoord.w;
+            float fogFactor = smoothstep( fogNear, fogFar, depth );
+
+            gl_FragColor = texture2D( map, vUv );
+            gl_FragColor.w *= pow( gl_FragCoord.z, 20.0 );
+            gl_FragColor = mix( gl_FragColor, vec4( fogColor, gl_FragColor.w ), fogFactor );
+
+        }
+
+    </script>
+
+    <script type="text/javascript" src="../../assets/graphics/render.js"></script>
+    <script type="text/javascript" src="../../assets/js/middleware.js"></script>
+
+    <link rel="stylesheet" href="../../assets/style/top-bar.css">
+    
+    <!-- <section id="section" class="section"> -->
+        <!-- 鼠标指针 -->
+        <!-- <div id="g-pointer-1"></div>
+        <div id="g-pointer-2"></div> -->
+
+        <div id="top-bar-wrapper" class="glass">
+            <div id="top-bar-title">
+                <span onclick="gotoHome()">看新闻，看世界</span>
+                <span id="top-bar-sub-title"></span>
+            </div>
+            <div id="newsGroup">
+                <div class="funcGroup">
+                    <div class="top-func">关于</div>
+                    <div class="top-func">更多</div>
+                    <div class="top-func">管理</div>
+                </div>
+                <div class="searchGroup">
+                    <div class="searchInputContainer">
+                        <input type="text" placeholder="想了解点什么~" class="seachInput">
+                    </div>
+                    <button class="searchBtn">搜索</button>
+                </div>
+            </div>
+            <div id="top-bar-btn-wrapper">
+                <div>
+                    <img src="../../assets/svgs/notification.svg" onclick="toggleNotificationCenter()" class="icon pointer">
+                </div>
+                <div>
+                    <img src="../../assets/svgs/settings.svg" onclick="toggleSettings()" class="icon pointer">
+                </div>
+                <div>
+                    <img class="avatar pointer" src="../../assets/svgs/default-user-avatar.svg">
+                </div>
+            </div>
+        </div>
+
+        <div class="mainContent">
+            <div class="leftMain">
+                <div class="newsList">
+                    <!-- <a href="https://www.baidu.com" class="each-news">
+                        <div class="posterContainer">
+                            <img src="../../assets/image/poster.png" alt="封面" class="poster">
+                        </div>
+                        <div class="words">
+                            <div class="title">为你的博客添加弹窗通知</div>
+                            <div class="description">一个锦上添花的小功能，能更直观的向访客展示网站当前状态或显示信息，这篇文章就来说说如何给你的博客添加弹窗通知插件</div>
+                            <div class="footFlag">
+                                <div class="timeAndCategory">2021-08-06 . 一些教程 / 美化比较</div>
+                                <div class="readBtn">阅读本文</div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="https://www.baidu.com" class="each-news">
+                        <div class="posterContainer">
+                            <img src="../../assets/image/poster.png" alt="封面" class="poster">
+                        </div>
+                        <div class="words">
+                            <div class="title">为你的博客添加弹窗通知</div>
+                            <div class="description">一个锦上添花的小功能，能更直观的向访客展示网站当前状态或显示信息，这篇文章就来说说如何给你的博客添加弹窗通知插件</div>
+                            <div class="footFlag">
+                                <div class="timeAndCategory">2021-08-06 . 一些教程 / 美化比较</div>
+                                <div class="readBtn">阅读本文</div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="https://www.baidu.com" class="each-news">
+                        <div class="words">
+                            <div class="title">Flex 布局教程 - 实例详解</div>
+                            <div class="description">上一篇文章介绍了Flex布局的语法，这篇介绍一下常见布局的Flex布局写法</div>
+                            <div class="footFlag">
+                                <div class="timeAndCategory">2021-08-06 . 或许有用 / 精华拾取</div>
+                                <div class="readBtn">阅读本文</div>
+                            </div>
+                        </div>
+                    </a> -->
+                    <!-- <div class="each-news">新闻一</div> -->
+                    <!-- <div class="each-news">新闻一</div> -->
+                </div>
+                <div class="nextPage">
+                    <div class="number">1 / 2</div>
+                    <div class="nextBtn">下一页</div>
+                </div>
+            </div>
+            <div class="rightMain">
+                <div class="hot">
+                    <div class="hotTitle">热点榜</div>
+                    <div class="hotList">
+                        <div class="hotItem">中央经济工作会议在北京举行</div>
+                        <div class="hotItem">1瓶布洛芬退烧药卖3000y元</div>
+                        <div class="hotItem">江西高中生胡鑫宇失踪已过60天</div>
+                    </div>
+                </div>
+                <div class="near">
+                    <div class="nearTitle">附近新闻榜</div>
+                    <div class="nearList">
+                        <!-- <div class="nearItem">韶关一男子裸奔</div>
+                        <div class="nearItem">韶关有超过3000人得新冠</div>
+                        <div class="nearItem">清远“洗脚哥”传播病毒</div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <!-- </section> -->
+    
+
+    <script type="text/javascript" src="./news.js"></script>
+
+
+    
+</body>
+</html>

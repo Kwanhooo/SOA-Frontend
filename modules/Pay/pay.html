@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>支付页面</title>
+    <script src="./pay.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <form name="punchout_form" method="post"
+        action="https://openapi.alipaydev.com/gateway.do?charset=UTF-8&method=alipay.trade.page.pay&sign=Cw9Q%2Bt7Jvv10sVZOcEygOJmNs%2FFILFr0ID9dWHSEmlA79z4gMX%2BkxYtFHJzSroJjQriXGvTh3ugYww249pL2mdM4L7F3abLJKlagKgJ9vyIRC7a8tQCtb%2FF2gxQ3tAB9itS1IYg4PdISjXxOIuU2atbM8BAwUcR3QA5txMIDRhIyVv4ywXHFyieDinx21QHvgmnBkI7fTeVlXYPT5TtNCem%2BvnNsOqXcT%2BWiuyiMIVHlnoydwUWvQEDMpR%2B60V5l3mxIC1f2jaT61fKqHMb9S%2Fsuolp2P%2BjhCKIuaGGLNTlbjhdd%2FM6rlnX7vArxtXoZ%2B7NmfXjzKTTJeVxmKxzpHg%3D%3D&return_url=http%3A%2F%2Flocalhost%3A8080%2Forder%2FviewOrder&notify_url=http%3A%2F%2F%E5%B7%A5%E7%A8%8B%E5%85%AC%E7%BD%91%E8%AE%BF%E9%97%AE%E5%9C%B0%E5%9D%80%2Falipay.trade.page.pay-JAVA-UTF-8%2Fnotify_url.jsp&version=1.0&app_id=2021000119641197&sign_type=RSA2&timestamp=2022-04-15+00%3A41%3A43&alipay_sdk=alipay-sdk-java-3.3.49.ALL&format=json">
+        <input type="hidden" name="biz_content"
+            value="{&quot;out_trade_no&quot;:&quot;1193&quot;,&quot;total_amount&quot;:&quot;18.5&quot;,&quot;subject&quot;:&quot;lzjOrder&quot;,&quot;body&quot;:&quot;&quot;,&quot;timeout_express&quot;:&quot;1c&quot;,&quot;product_code&quot;:&quot;FAST_INSTANT_TRADE_PAY&quot;}">
+        <input type="submit" value="立即支付" style="display:none">
+    </form>
+    <script>document.forms[0].submit();</script>
+</body>
+
+</html>

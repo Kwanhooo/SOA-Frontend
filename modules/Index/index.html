@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Access-Control-Allow-Origin" content="*">
     <!-- 强制 HTTPS，若不需要可删除，但可能出现问题 -->
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
     <meta name="renderer" content="webkit"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="force-rendering" content="webkit"/>
@@ -50,8 +50,10 @@
     <link rel="manifest" href="/manifest.json">
 
     <link rel="stylesheet" href="../../assets/style/global.css">
+    <link rel="stylesheet" href="./css/myMusicList.css">
     <script src="../../assets/js/middleware.js"></script>
     <script src="../../assets/js/on-ready.js"></script>
+    <script src="./js/myMusic.js"></script>
 </head>
 
 <body>
@@ -214,7 +216,7 @@
                             <!--第一组-->
                             <div class="row">
                                 <div class="col">
-                                    <a id="link-url-1" href="" target="">
+                                    <a id="link-url-1" href="../News/news.html" target="">
                                         <div class="link-card cards">
                                             <i id="link-icon-1" class="fa-solid fa-blog"></i>
                                             <span class="link-name" id="link-name-1">新闻</span>
@@ -313,59 +315,59 @@
                         </div>
                     </div>
                 </div>
-<!--                <div class="line">-->
-<!--                    <i class="fa-solid fa-angle-left"></i>-->
-<!--                    <span class="line-text">杂七杂八</span>-->
-<!--                    <i class="fa-solid fa-angle-right"></i>-->
-<!--                </div>-->
-<!--                &lt;!&ndash;网站链接&ndash;&gt;-->
-<!--                <div class="row">-->
-<!--                    <div class="col">-->
-<!--                        <a href="https://status.imsyy.top/" target="_blank">-->
-<!--                            <div class="link-card cards">-->
-<!--                                <span class="link-name">站点监测</span>-->
-<!--                            </div>-->
-<!--                        </a>-->
-<!--                    </div>-->
-<!--                    <div class="col 2">-->
-<!--                        <a href="https://player.imsyy.top/" target="_blank">-->
-<!--                            <div class="link-card cards">-->
-<!--                                <span class="link-name">播放器</span>-->
-<!--                            </div>-->
-<!--                        </a>-->
-<!--                    </div>-->
-<!--                    <div class="col">-->
-<!--                        <a href="https://write.imsyy.top/" target="_blank">-->
-<!--                            <div class="link-card cards">-->
-<!--                                <span class="link-name">编辑器</span>-->
-<!--                            </div>-->
-<!--                        </a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="row" style="margin-top: 1.5rem;">-->
-<!--                    <div class="col">-->
-<!--                        <a href="https://photo.imsyy.top/" target="_blank">-->
-<!--                            <div class="link-card cards">-->
-<!--                                <span class="link-name">时光相册</span>-->
-<!--                            </div>-->
-<!--                        </a>-->
-<!--                    </div>-->
-<!--                    <div class="col 2">-->
-<!--                        <a href="https://share.imsyy.top/" target="_blank">-->
-<!--                            <div class="link-card cards">-->
-<!--                                <span class="link-name">文件库</span>-->
-<!--                            </div>-->
-<!--                        </a>-->
-<!--                    </div>-->
-<!--                    <div class="col">-->
-<!--                        <a id="openmore">-->
-<!--                            <div class="link-card cards">-->
-<!--                                <span class="link-name">更多</span>-->
-<!--                            </div>-->
-<!--                        </a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
+               <div class="line">
+                    <i class="fa-solid fa-angle-left"></i>-->
+                    <span class="line-text">杂七杂八</span>-->
+                    <i class="fa-solid fa-angle-right"></i>-->
+                </div>-->
+                &lt;!&ndash;网站链接&ndash;&gt;-->
+                <div class="row">-->
+                    <div class="col">-->
+                        <a href="https://status.imsyy.top/" target="_blank">-->
+                            <div class="link-card cards">-->
+                                <span class="link-name">站点监测</span>-->
+                            </div>-->
+                        </a>-->
+                    </div>-->
+                    <div class="col 2">-->
+                        <a href="https://player.imsyy.top/" target="_blank">-->
+                            <div class="link-card cards">-->
+                                <span class="link-name">播放器</span>-->
+                            </div>-->
+                        </a>-->
+                    </div>-->
+                    <div class="col">-->
+                        <a href="https://write.imsyy.top/" target="_blank">-->
+                            <div class="link-card cards">-->
+                                <span class="link-name">编辑器</span>-->
+                            </div>-->
+                        </a>-->
+                    </div>-->
+                </div>-->
+                <div class="row" style="margin-top: 1.5rem;">-->
+                    <div class="col">-->
+                        <a href="https://photo.imsyy.top/" target="_blank">-->
+                            <div class="link-card cards">-->
+                                <span class="link-name">时光相册</span>-->
+                            </div>-->
+                        </a>-->
+                    </div>-->
+                    <div class="col 2">-->
+                        <a href="https://share.imsyy.top/" target="_blank">-->
+                            <div class="link-card cards">-->
+                                <span class="link-name">文件库</span>-->
+                            </div>-->
+                        </a>-->
+                    </div>-->
+                    <div class="col">-->
+                        <a id="openmore">-->
+                            <div class="link-card cards">-->
+                                <span class="link-name">更多</span>-->
+                            </div>-->
+                        </a>-->
+                    </div>-->
+                </div>-->
+            </div>
             <!--更多页面-->
             <div class="box" id="box" style="display: none">
                 <div class="box-wrapper">
@@ -376,10 +378,10 @@
                     <!--左侧内容-->
                     <div class="box-left">
                         <div class="img-title">
-                            <span class="img-title-big" id="logo-title-other">imsyy</span>
-                            <span class="img-text" id="logo-title-other-small">.top</span><br/>
-                            <span class="img-text">&nbsp;v&nbsp;3.3</span>
-                            <a href="https://github.com/imsyy/home" target="_blank">
+                            <span class="img-title-big" id="logo-title-other">Power</span>
+                            <span class="img-text" id="logo-title-other-small">.Life</span><br/>
+                            <span class="img-text">&nbsp;v&nbsp;1.0</span>
+                            <a href="https://github.com/Kwanhooo/SOA-Frontend" target="_blank">
                                 <i class="fa-brands fa-github"></i>
                             </a>
                         </div>
@@ -465,6 +467,119 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- 当前热榜歌曲 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                            aria-expanded="false" aria-controls="collapseThree">
+                                        当前热搜榜
+                                    </button>
+                                    <div id="collapseThree" class="accordion-collapse collapse"
+                                    aria-labelledby="headingThee" data-bs-parent="#accordion">
+                                        <div>
+                                            <div class="aplayer-list" style="max-height: 336px;">
+                                                <div class="upnote">
+                                                    <!-- <div class="uptext myMusic-item">
+                                                        <div class="myMusic-item-before">
+                                                            <div class="myMusic-item-index">1</div>
+                                                            <div class="myMusic-item-title">心墙</div>
+                                                            <div class="myMusic-item-score">13268</div>
+                                                        </div>
+                                                        <div class="myMusic-item-content">在你的心墙上 发现一扇窗</div>
+                                                    </div>
+                                                    <div class="uptext myMusic-item">
+                                                        <div class="myMusic-item-before">
+                                                            <div class="myMusic-item-index">1</div>
+                                                            <div class="myMusic-item-title">心墙</div>
+                                                            <div class="myMusic-item-score">13268</div>
+                                                        </div>
+                                                        <div class="myMusic-item-content">在你的心墙上 发现一扇窗</div>
+                                                    </div>
+                                                    <div class="uptext myMusic-item">
+                                                        <div class="myMusic-item-before">
+                                                            <div class="myMusic-item-index">1</div>
+                                                            <div class="myMusic-item-title">心墙</div>
+                                                            <div class="myMusic-item-score">13268</div>
+                                                        </div>
+                                                        <div class="myMusic-item-content">在你的心墙上 发现一扇窗</div>
+                                                    </div>
+                                                    <div class="uptext myMusic-item">
+                                                        <div class="myMusic-item-before">
+                                                            <div class="myMusic-item-index">1</div>
+                                                            <div class="myMusic-item-title">心墙</div>
+                                                            <div class="myMusic-item-score">13268</div>
+                                                        </div>
+                                                        <div class="myMusic-item-content">在你的心墙上 发现一扇窗</div>
+                                                    </div>
+                                                    <div class="uptext myMusic-item">
+                                                        <div class="myMusic-item-before">
+                                                            <div class="myMusic-item-index">1</div>
+                                                            <div class="myMusic-item-title">心墙</div>
+                                                            <div class="myMusic-item-score">13268</div>
+                                                        </div>
+                                                        <div class="myMusic-item-content">在你的心墙上 发现一扇窗</div>
+                                                    </div>
+                                                    <div class="uptext myMusic-item">
+                                                        <div class="myMusic-item-before">
+                                                            <div class="myMusic-item-index">1</div>
+                                                            <div class="myMusic-item-title">心墙</div>
+                                                            <div class="myMusic-item-score">13268</div>
+                                                        </div>
+                                                        <div class="myMusic-item-content">在你的心墙上 发现一扇窗</div>
+                                                    </div> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </h2>
+                            </div>
+                            <!-- 每日推荐歌曲 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingFour">
+                                    <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseFour"
+                                            aria-expanded="false" aria-controls="collapseFour">
+                                        每日推荐歌曲
+                                    </button>
+                                    <div id="collapseFour" class="accordion-collapse collapse"
+                                    aria-labelledby="headingFour" data-bs-parent="#accordion">
+                                        <div class="accordion-body">
+                                            <div class="upnote">
+                                                <div class="recommand-list">
+                                                    <!-- <div class="recommand-item">
+                                                        <div class="rec-picture">
+                                                            <img src="./img/music.jpg" alt="" class="rec-pic">
+                                                        </div>
+                                                        <div class="recommand-word">
+                                                            <span class="recommand-word-text-1">此生不换-青鸟飞鱼-超76%人播放</span>
+                                                            <span class="recommand-word-text-2">此生不换-青鸟飞鱼-超76%人播放</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="recommand-item">
+                                                        <div class="rec-picture">
+                                                            <img src="./img/music.jpg" alt="" class="rec-pic">
+                                                        </div>
+                                                        <div class="recommand-word">
+                                                            <span class="recommand-word-text-1">此生不换-青鸟飞鱼-超76%人播放</span>
+                                                            <span class="recommand-word-text-2">此生不换-青鸟飞鱼-超76%人播放</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="recommand-item">
+                                                        <div class="rec-picture">
+                                                            <img src="./img/music.jpg" alt="" class="rec-pic">
+                                                        </div>
+                                                        <div class="recommand-word">
+                                                            <span class="recommand-word-text-1">此生不换-青鸟飞鱼-超76%人播放</span>
+                                                            <span class="recommand-word-text-2">此生不换-青鸟飞鱼-超76%人播放</span>
+                                                        </div>
+                                                    </div> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </h2>
+                            </div>
                         </div>
                     </div>
                     <!--Aplayer-->
@@ -497,13 +612,13 @@
     </footer>
 </section>
 <!-- sw.js -->
-<script>
+<!-- <script>
     if ("serviceWorker" in navigator) {
         window.addEventListener("load", function () {
             navigator.serviceWorker.register("sw.js");
         });
     }
-</script>
+</script> -->
 <!-- noscript -->
 <noscript>
     <div class="noscript fixed-top">请开启 JavaScript</div>
@@ -541,7 +656,7 @@
         </div>
     </div>
     <div id="notification-center" class="glass">
-        <div class="notification-item">
+        <!-- <div class="notification-item">
             <div class="header">
                 <div class="title">
                     <div class="notification-icon-wrapper">
@@ -557,7 +672,24 @@
             <div class="content">
                 建议穿着轻薄的长袖衬衫或毛衣，加上牛仔裤或长裤。也可以考虑穿着单层的夹克或风衣来保暖。最好选择吸湿速干的面料，这样可以保持身体温暖，同时减少湿气的影响。
             </div>
-        </div>
+        </div> -->
+        <!-- <div class="notification-item">
+            <div class="header">
+                <div class="title">
+                    <div class="notification-icon-wrapper">
+                        <img src="../../assets/image/weather.jpg" class="notification-icon-rebuild">
+                    </div>
+                    <div class="title-text-rebuild">天气</div>
+                </div>
+                <div class="btn">
+                    <img src="../../assets/svgs/close.svg" class="icon pointer">
+                </div>
+            </div>
+            <hr style="width: 100%">
+            <div class="content">
+                建议穿着轻薄的长袖衬衫或毛衣，加上牛仔裤或长裤。也可以考虑穿着单层的夹克或风衣来保暖。最好选择吸湿速干的面料，这样可以保持身体温暖，同时减少湿气的影响。
+            </div>
+        </div> -->
     </div>
     <link rel="stylesheet" href="../../assets/style/settings-for-index.css">
     <link rel="stylesheet" href="../../assets/style/switch.css">
@@ -591,6 +723,48 @@
                     </div>
                     <div class="description">
                         此功能需付费订阅，开启后将会每天为您推送天气预报，以及AI给出的生活建议。
+                    </div>
+                </div>
+                <div class="settings-item">
+                    <div class="item-inner">
+                        <div class="row-rebuild">
+                            <div class="title">
+                                <div>
+                                    <img class="icon" src="../../assets/image/music.png" alt="music">
+                                </div>
+                                <div class="title">音乐推送</div>
+                            </div>
+                            <div class="switch-wrapper">
+                                <label class="form-switch">
+                                    <input type="checkbox" id="musicSubscription" onclick="toggleMusic()">
+                                    <i></i>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="description">
+                        此功能需付费订阅，开启后将会每天为您发送您可能感兴趣的音乐。
+                    </div>
+                </div>
+                <div class="settings-item">
+                    <div class="item-inner">
+                        <div class="row-rebuild">
+                            <div class="title">
+                                <div>
+                                    <img class="icon" src="../../assets/image/news.png" alt="news">
+                                </div>
+                                <div class="title">新闻推送</div>
+                            </div>
+                            <div class="switch-wrapper">
+                                <label class="form-switch">
+                                    <input type="checkbox" id="newsSubscription" onclick="toggleNews()">
+                                    <i></i>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="description">
+                        此功能需付费订阅，开启后将会每天为您发送一则新闻。
                     </div>
                 </div>
                 <div class="settings-item">

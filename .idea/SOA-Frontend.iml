@@ -10,5 +10,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="demo-center" level="application" />
     <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="demoutils" level="application" />
+    <orderEntry type="library" name="addToolbar" level="application" />
   </component>
 </module>

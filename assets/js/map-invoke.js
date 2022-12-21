@@ -20,7 +20,7 @@ AMap.plugin('AMap.Geolocation', function () {
     });
 });
 
-//实时路况图层
+// 实时路况图层
 var trafficLayer = new AMap.TileLayer.Traffic({
     zIndex: 10
 });

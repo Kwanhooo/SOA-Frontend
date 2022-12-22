@@ -55,7 +55,7 @@ function showAroundType() {
                     <div class="search-result-item-title">${types[i].name}</div>
                     <div class="search-result-item-brief">${types[i].brief}</div>
                 </div>
-                <div class="search-result-item-go" onclick="searchAround('${types[i].name}')">
+                <div class="search-result-item-go" onclick="searchAround('${types[i].name}',5000)">
                     <img src="${types[i].icon}" class="pointer go-icon">
                 </div>
             </div>
@@ -65,6 +65,7 @@ function showAroundType() {
 }
 
 function searchAround(type, distance) {
+    console.log(city)
     AMap.plugin("AMap.PlaceSearch", function () {
         //构造地点查询类
         var placeSearch = new AMap.PlaceSearch({
@@ -75,9 +76,9 @@ function searchAround(type, distance) {
             // type: '加油站', // 兴趣点类别
             // type: '便利店', // 兴趣点类别
             type: type, // 兴趣点类别
-            pageSize: 20, // 单页显示结果条数
+            pageSize: 30, // 单页显示结果条数
             pageIndex: 1, // 页码
-            city: cityCode, // 兴趣点城市
+            city: localStorage.getItem('geo'), // 兴趣点城市
             citylimit: false,  //是否强制限制在设置的城市内搜索
             map: map, // 展现结果的地图实例
             // panel: "panel", // 结果列表将在此容器中进行展示。
@@ -88,7 +89,8 @@ function searchAround(type, distance) {
         placeSearch.searchNearBy('', cpoint, distance, function (status, result) {
             console.log("status", status)
             console.log("result", result)
-            renderSearchResult(result)
+            if (result)
+                renderSearchResult(result)
         });
     });
 }

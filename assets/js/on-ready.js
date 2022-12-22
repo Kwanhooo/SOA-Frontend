@@ -5,6 +5,7 @@ window.document.onreadystatechange = function () {
             renderSettings();
         }, 1000)
         if (document.querySelector('#weather-iframe')) {
+            console.log('onreadystatechange');
             document.querySelector('#weather-iframe').src = 'https://weathernew.pae.baidu.com/weathernew/pc?query=' + localStorage.getItem('geo') + '天气&srcid=4982';
         }
     }

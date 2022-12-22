@@ -1,24 +1,21 @@
-var station;
-AMap.plugin('AMap.StationSearch', function () {
-    station = new AMap.StationSearch({
-        pageIndex: 1, //页码
-        pageSize: 60, //单页显示结果条数
-        city: '0731'   //确定搜索城市
+function stationSearch(keyword) {
+    console.log(city)
+    AMap.plugin('AMap.StationSearch', function () {
+        station = new AMap.StationSearch({
+            pageIndex: 1, //页码
+            pageSize: 100, //单页显示结果条数
+            city: city  //确定搜索城市
+        });
     });
-});
-
-function stationSearch() {
-    console.log('city', city)
-    console.log('cityCode', cityCode)
-    var stationKeyWord = '地铁站';
+    var stationKeyWord = keyword;
     if (!stationKeyWord) return
     station.search(stationKeyWord, function (status, result) {
-        stationSearchCallBack(result);
+        stationSearchCallBack(result, keyword);
     });
 }
 
 /* 公交站点查询返回数据解析 */
-function stationSearchCallBack(searchResult) {
+function stationSearchCallBack(searchResult, keyword) {
     console.log(searchResult)
     var stationArr = searchResult.stationInfo;
     var searchNum = stationArr.length;
@@ -26,7 +23,7 @@ function stationSearchCallBack(searchResult) {
         for (var i = 0; i < searchNum; i++) {
             var marker = new AMap.Marker({
                 icon: new AMap.Icon({
-                    image: 'https://a.amap.com/jsapi_demos/static/resource/img/pin.png',
+                    image: 'https://cloud.0xcafebabe.cn/' + keyword + '.png',
                     size: new AMap.Size(32, 32),
                     imageSize: new AMap.Size(32, 32)
                 }),
@@ -47,4 +44,4 @@ function stationSearchCallBack(searchResult) {
     }
 }
 
-document.getElementById('search').onclick = stationSearch;
+// document.getElementById('search').onclick = stationSearch;

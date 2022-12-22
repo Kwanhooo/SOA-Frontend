@@ -4,7 +4,8 @@ function switchMode() {
         naviMode = 'transfer';
         document.getElementById('mode-switch-text').innerText = '驾车';
         document.getElementById('mode-icon').src = '../../assets/image/drive.png';
-        stationSearch();
+        stationSearch('公交站');
+        stationSearch('地铁站');
         log.success('已切换到公交模式');
         callingModeOn = false;
     } else {

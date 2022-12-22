@@ -19,68 +19,104 @@ function sendInfo(info) {
 
 function initSettings() {
     if (localStorage.getItem("weatherSubscription") === "true") {
-        document.getElementById("weatherSubscription").setAttribute("checked", "checked");
+        if (document.getElementById("weatherSubscription")){
+            document.getElementById("weatherSubscription").setAttribute("checked", "checked");
+        }
     } else {
         localStorage.setItem("weatherSubscription", "false");
-        document.getElementById("weatherSubscription").removeAttribute("checked");
+        if (document.getElementById("weatherSubscription")){
+            document.getElementById("weatherSubscription").removeAttribute("checked");
+        }
     }
 
     if (localStorage.getItem("musicSubscription") === "true") {
-        document.getElementById("musicSubscription").setAttribute("checked", "checked");
+        if (document.getElementById("musicSubscription")){
+            document.getElementById("musicSubscription").setAttribute("checked", "checked");
+        }
     } else {
         localStorage.setItem("musicSubscription", "false");
-        document.getElementById("musicSubscription").removeAttribute("checked");
+        if (document.getElementById("musicSubscription")){
+            document.getElementById("musicSubscription").removeAttribute("checked");
+        }
     }
 
     if (localStorage.getItem("newsSubscription") === "true") {
-        document.getElementById("newsSubscription").setAttribute("checked", "checked");
+        if (document.getElementById("newsSubscription")){
+            document.getElementById("newsSubscription").setAttribute("checked", "checked");
+        }
     } else {
         localStorage.setItem("newsSubscription", "false");
-        document.getElementById("newsSubscription").removeAttribute("checked");
+        if (document.getElementById("newsSubscription")){
+            document.getElementById("newsSubscription").removeAttribute("checked");
+        }
     }
 
     if (localStorage.getItem("autoLocation") === "true") {
-        document.getElementById("autoLocation").setAttribute("checked", "checked");
+        if (document.getElementById("autoLocation")){
+            document.getElementById("autoLocation").setAttribute("checked", "checked");
+        }
     } else {
         localStorage.setItem("autoLocation", "false");
-        document.getElementById("autoLocation").removeAttribute("checked");
+        if (document.getElementById("autoLocation")){
+            document.getElementById("autoLocation").removeAttribute("checked");
+        }
     }
 }
 
 function renderSettings() {
     // console.log(document.getElementById("weatherSubscription"))
     if (localStorage.getItem("weatherSubscription") === "true") {
-        document.getElementById("weatherSubscription").setAttribute("checked", "checked");
+        if (document.getElementById("weatherSubscription")){
+            document.getElementById("weatherSubscription").setAttribute("checked", "checked");
+        }
     } else {
-        document.getElementById("weatherSubscription").removeAttribute("checked");
+        if (document.getElementById("weatherSubscription")){
+            document.getElementById("weatherSubscription").removeAttribute("checked");
+        }
     }
 
     if (localStorage.getItem("musicSubscription") === "true") {
-        document.getElementById("musicSubscription").setAttribute("checked", "checked");
+        if (document.getElementById("musicSubscription")){
+            document.getElementById("musicSubscription").setAttribute("checked", "checked");
+        }
     } else {
-        document.getElementById("musicSubscription").removeAttribute("checked");
+        if (document.getElementById("musicSubscription")){
+            document.getElementById("musicSubscription").removeAttribute("checked");
+        }
     }
 
     if (localStorage.getItem("newsSubscription") === "true") {
-        document.getElementById("newsSubscription").setAttribute("checked", "checked");
+        if (document.getElementById("newsSubscription")){
+            document.getElementById("newsSubscription").setAttribute("checked", "checked");
+        }
     } else {
-        document.getElementById("newsSubscription").removeAttribute("checked");
+        if (document.getElementById("newsSubscription")){
+            document.getElementById("newsSubscription").removeAttribute("checked");
+        }
     }
 
     if (localStorage.getItem("autoLocation") === "true") {
-        document.getElementById("autoLocation").setAttribute("checked", "checked");
+        if (document.getElementById("autoLocation")){
+            document.getElementById("autoLocation").setAttribute("checked", "checked");
+        }
     } else {
-        document.getElementById("autoLocation").removeAttribute("checked");
+        if (document.getElementById("autoLocation")){
+            document.getElementById("autoLocation").removeAttribute("checked");
+        }
     }
 
     if (localStorage.getItem("autoLocation") === "false") {
-        document.getElementById("geo").removeAttribute("disabled");
-        document.getElementById("geo").classList.remove('forbidden');
-        document.getElementById("geo").value = localStorage.getItem("geo");
+        if (document.getElementById("geo")){
+            document.getElementById("geo").removeAttribute("disabled");
+            document.getElementById("geo").classList.remove('forbidden');
+            document.getElementById("geo").value = localStorage.getItem("geo");
+        }
     } else {
-        document.getElementById("geo").value = localStorage.getItem("geo");
-        document.getElementById("geo").classList.add('forbidden');
-        document.getElementById("geo").setAttribute("disabled", "disabled");
+        if (document.getElementById("geo")){
+            document.getElementById("geo").value = localStorage.getItem("geo");
+            document.getElementById("geo").classList.add('forbidden');
+            document.getElementById("geo").setAttribute("disabled", "disabled");
+        }
     }
 }
 
@@ -144,7 +180,7 @@ function sendSubscriptionInfo(subscriptionType) {
         localStorage.setItem('haveBuy', 'true');
     }
 
-    // 根据subscriptionType发送感谢开通的短信 
+    // 根据subscriptionType发送感谢开通的短信
     sendInfo('感谢您开通' + subscriptionType + '服务一个月，即日起生效，逾期将自动停止服务，请知晓。');
 }
 
@@ -169,7 +205,7 @@ function sendInfoEveryDay() {
         if (localStorage.getItem('musicSubscription') === 'true') {
             setTimeout(function() {
                 let dataShow = JSON.parse(localStorage.getItem('recommendMusic'));
-                let musicInfo = '今日为您推荐的歌曲有：' + dataShow[0].name + '-' + dataShow[0].ar[0].name 
+                let musicInfo = '今日为您推荐的歌曲有：' + dataShow[0].name + '-' + dataShow[0].ar[0].name
                     + '、' + dataShow[1].name + '-' + dataShow[1].ar[0].name
                     + '、' + dataShow[2].name + '-' + dataShow[2].ar[0].name
                     + '等6首歌曲，欢迎您到本网站欣赏。';
@@ -185,7 +221,7 @@ function sendInfoEveryDay() {
             setTimeout(function() {
                 let newsInfo = '今日为您推荐的新闻是：贺州四年级学生高热惊厥离世，惊厥是否与新冠相关？专家解答。详情请点击：https://new.qq.com/rain/a/20221220A08M5L00';
                 sendInfo(newsInfo);
-    
+
                 // 显示在消息页面
                 localStorage.setItem('newsInfo', '今日为您推荐的新闻是：贺州四年级学生高热惊厥离世，惊厥是否与新冠相关？专家解答。详情请点击：<a href="https://new.qq.com/rain/a/20221220A08M5L00">https://new.qq.com/rain/a/20221220A08M5L00</a>');
                 showMessageInNotificationCenter('今日为您推荐的新闻是：贺州四年级学生高热惊厥离世，惊厥是否与新冠相关？专家解答。详情请点击：<a href="https://new.qq.com/rain/a/20221220A08M5L00">https://new.qq.com/rain/a/20221220A08M5L00</a>', 'newsSubscription');
@@ -202,9 +238,9 @@ function sendInfoEveryDay() {
                 // console.log('短信中' + city + ' - ' + tem + '-' + win + '-' + win_speed);
                 // sendInfo( '今日' + city + ' ' + tem + ' ' + win + ' ' + win_speed + ' '+ ' 建议穿着轻薄的长袖衬衫或毛衣，加上牛仔裤或长裤，也可以考虑穿着单层的夹克或风衣来保暖。')
                 let info = '今日' + city + ' ' + tem + ' ' + win + ' ' + win_speed + '，';
-    
+
                 sendWeatherAIAdvice(info, '温度' + win + '摄氏度' + '适合穿什么衣服');
-                
+
             }, 3000);
         }
 
@@ -255,7 +291,7 @@ function showMessageInNotificationCenter(info, subscriptionType) {
         // 添加标题部分
         let _header = document.createElement('div');
         _header.setAttribute('class', 'header')
-        
+
         let _title = document.createElement('div');
         _title.setAttribute('class', 'title');
 
@@ -264,16 +300,16 @@ function showMessageInNotificationCenter(info, subscriptionType) {
 
         let _img = document.createElement('img');
         if(subscriptionType == 'weatherSubscription') {
-            _img.setAttribute('src', '../../assets/image/weather.jpg'); 
+            _img.setAttribute('src', '../../assets/image/weather.jpg');
         }else if(subscriptionType == 'newsSubscription') {
-            _img.setAttribute('src', '../../assets/image/news.png'); 
+            _img.setAttribute('src', '../../assets/image/news.png');
         }else {
-            _img.setAttribute('src', '../../assets/image/music.png'); 
+            _img.setAttribute('src', '../../assets/image/music.png');
         }
         _img.setAttribute('class', 'notification-icon-rebuild');
         _notificationIconWrapper.appendChild(_img);
         _title.appendChild(_notificationIconWrapper);
-        
+
         let titleTextRebuild = document.createElement('div');
         titleTextRebuild.setAttribute('class', 'title-text-rebuild');
         if(subscriptionType == 'weatherSubscription') {
@@ -284,12 +320,12 @@ function showMessageInNotificationCenter(info, subscriptionType) {
             titleTextRebuild.innerHTML = '音乐';
         }
         _title.appendChild(titleTextRebuild);
-        
+
         _header.appendChild(_title);
 
         let closeBtn = document.createElement('div');
         closeBtn.setAttribute('class', 'btn');
-        
+
         let _img2 = document.createElement('img');
         _img2.setAttribute('class', 'icon pointer');
         _img2.setAttribute('src', '../../assets/svgs/close.svg');

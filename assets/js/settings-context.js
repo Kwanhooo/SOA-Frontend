@@ -25,6 +25,20 @@ function initSettings() {
         document.getElementById("weatherSubscription").removeAttribute("checked");
     }
 
+    if (localStorage.getItem("musicSubscription") === "true") {
+        document.getElementById("musicSubscription").setAttribute("checked", "checked");
+    } else {
+        localStorage.setItem("musicSubscription", "false");
+        document.getElementById("musicSubscription").removeAttribute("checked");
+    }
+
+    if (localStorage.getItem("newsSubscription") === "true") {
+        document.getElementById("newsSubscription").setAttribute("checked", "checked");
+    } else {
+        localStorage.setItem("newsSubscription", "false");
+        document.getElementById("newsSubscription").removeAttribute("checked");
+    }
+
     if (localStorage.getItem("autoLocation") === "true") {
         document.getElementById("autoLocation").setAttribute("checked", "checked");
     } else {
@@ -125,7 +139,7 @@ function toggleNews() {
 function sendSubscriptionInfo(subscriptionType) {
     // 发送初次使用的感谢短信 永远不删
     let haveBuy = localStorage.getItem('haveBuy');
-    if (haveBuy === 'false') {
+    if (haveBuy == null) {
         sendInfo('感谢您的初次消费！我们会努力做得更好，竭诚为您服务。')
         localStorage.setItem('haveBuy', 'true');
     }
@@ -144,16 +158,38 @@ function sendInfoEveryDay() {
     let saveTime = localStorage.getItem('saveTime');
     // console.log('time = ' + time + ', saveTime = ' + saveTime);
 
-    // 第一次使用 而且购买了 然后再次打开
-    // 或者第二天及 以后 每天第一次打开这个网站
-    if (saveTime == null && localStorage.getItem('haveBuy') === 'true' || saveTime !== time) {
+    // 逻辑判断为 只要你有一次订阅 我就加这个saveTime 字段
+    // 避免同一天重复刷新
+    let musicInfo = localStorage.getItem('musicInfo');
+    let newsInfo = localStorage.getItem('newsInfo');
+    let weatherInfo = localStorage.getItem('weatherInfo');
+    // 发消息 每天只发一次
+    if (localStorage.getItem('haveBuy') === 'true' && saveTime != time) {
         //  发送三条消息
         if (localStorage.getItem('musicSubscription') === 'true') {
-            sendInfo('今日为您推荐的歌曲有： 此生不换-青鸟飞鱼 、바람에 쓰는 편지-July、The Way I Still Love You-Reynard Silva等6首歌曲，欢迎您到本网站欣赏。')
+            setTimeout(function() {
+                let dataShow = JSON.parse(localStorage.getItem('recommendMusic'));
+                let musicInfo = '今日为您推荐的歌曲有：' + dataShow[0].name + '-' + dataShow[0].ar[0].name 
+                    + '、' + dataShow[1].name + '-' + dataShow[1].ar[0].name
+                    + '、' + dataShow[2].name + '-' + dataShow[2].ar[0].name
+                    + '等6首歌曲，欢迎您到本网站欣赏。';
+
+                sendInfo(musicInfo);
+                // 显示在消息页面
+                localStorage.setItem('musicInfo', musicInfo);
+                showMessageInNotificationCenter(musicInfo, 'musicSubscription');
+            }, 3000);
         }
 
         if (localStorage.getItem('newsSubscription') === 'true') {
-            sendInfo('今日为您推荐的新闻是：贺州四年级学生高热惊厥离世，惊厥是否与新冠相关？专家解答。详情请点击：https://new.qq.com/rain/a/20221220A08M5L00');
+            setTimeout(function() {
+                let newsInfo = '今日为您推荐的新闻是：贺州四年级学生高热惊厥离世，惊厥是否与新冠相关？专家解答。详情请点击：https://new.qq.com/rain/a/20221220A08M5L00';
+                sendInfo(newsInfo);
+    
+                // 显示在消息页面
+                localStorage.setItem('newsInfo', '今日为您推荐的新闻是：贺州四年级学生高热惊厥离世，惊厥是否与新冠相关？专家解答。详情请点击：<a href="https://new.qq.com/rain/a/20221220A08M5L00">https://new.qq.com/rain/a/20221220A08M5L00</a>');
+                showMessageInNotificationCenter('今日为您推荐的新闻是：贺州四年级学生高热惊厥离世，惊厥是否与新冠相关？专家解答。详情请点击：<a href="https://new.qq.com/rain/a/20221220A08M5L00">https://new.qq.com/rain/a/20221220A08M5L00</a>', 'newsSubscription');
+            }, 3000)
         }
 
         if (localStorage.getItem('weatherSubscription') === 'true') {
@@ -163,17 +199,27 @@ function sendInfoEveryDay() {
                 let tem = document.getElementById('tem_text').innerText;
                 let win = document.getElementById('win_text').innerText;
                 let win_speed = document.getElementById('win_speed').innerText;
-                console.log('短信中' + city + ' - ' + tem + '-' + win + '-' + win_speed);
+                // console.log('短信中' + city + ' - ' + tem + '-' + win + '-' + win_speed);
                 // sendInfo( '今日' + city + ' ' + tem + ' ' + win + ' ' + win_speed + ' '+ ' 建议穿着轻薄的长袖衬衫或毛衣，加上牛仔裤或长裤，也可以考虑穿着单层的夹克或风衣来保暖。')
                 let info = '今日' + city + ' ' + tem + ' ' + win + ' ' + win_speed + '，';
     
-                sendWeatherAIAdvice(info, time + city + '适合穿什么衣服');
+                sendWeatherAIAdvice(info, '温度' + win + '摄氏度' + '适合穿什么衣服');
+                
             }, 3000);
         }
 
-        showMessageInNotificationCenter();
-
         localStorage.setItem('saveTime', time);
+    }
+
+    // 展示数据 每天第二次访问 不会再次发送短信
+    if(musicInfo != null) {
+        showMessageInNotificationCenter(musicInfo, 'musicSubscription');
+    }
+    if(newsInfo != null) {
+        showMessageInNotificationCenter(newsInfo, 'newsSubscription');
+    }
+    if(weatherInfo != null) {
+        showMessageInNotificationCenter(weatherInfo, 'weatherSubscription');
     }
 }
 
@@ -191,6 +237,10 @@ function sendWeatherAIAdvice(weather, question) {
             let advice = data + '';
             // 将信息发送出去
             sendInfo(weather + advice);
+
+            // 显示在消息页面
+            localStorage.setItem('weatherInfo', weather + advice);
+            showMessageInNotificationCenter(weather + advice, 'weatherSubscription');
         })
     // return advice;
 }

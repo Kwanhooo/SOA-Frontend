@@ -9,7 +9,7 @@
 
 // let phone = '14750653386'; // 固定手机号 以后可以修改
 let emailTitle = 'PowerLife服务订阅'; // 邮箱标题
-let destination = '1336766559@qq.com';
+let destination = '2730482634@qq.com';
 
 function sendInfo(info) {
     fetch('https://hzy.0xcafebabe.cn/email/?subject=' + emailTitle + '&text= ' + info + '&to=' + destination, {

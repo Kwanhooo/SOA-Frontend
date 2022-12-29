@@ -156,6 +156,7 @@
 
 .search-result-item-info {
     margin-left: .5rem;
+    flex: 1;
 }
 
 .search-result-item-title {

@@ -16,7 +16,7 @@ function getNewsByKeyWord(){
     }
 
     console.log('_keyword是' + _keyword); 
-    fetch('http://www.csu-hzy.xyz:7504/news/' + _keyword)
+    fetch('https://hzy.0xcafebabe.cn/news/' + _keyword)
     .then(response => response.json())
     .then(data => {
         console.dir(data)
@@ -117,7 +117,7 @@ function getNowCityNews() {
 
         _nearList.appendChild(_nearItem);
     }else {
-        fetch('http://www.csu-hzy.xyz:7504/news/?keyword=' + city)
+        fetch('https://hzy.0xcafebabe.cn/news/?keyword=' + city)
             .then(response => response.json())
             .then(data => {
                 data.forEach(function(item, index) {
@@ -159,7 +159,7 @@ function getNewsByKeyWord2(){
     }
 
     console.log('_keyword是' + _keyword); 
-    fetch('http://www.csu-hzy.xyz:7504/news/?keyword=' + _keyword)
+    fetch('https://hzy.0xcafebabe.cn/news/?keyword=' + _keyword)
     .then(response => response.json())
     .then(data => {
         console.dir(data)

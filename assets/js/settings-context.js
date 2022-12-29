@@ -12,7 +12,7 @@ let emailTitle = 'PowerLife服务订阅'; // 邮箱标题
 let destination = '1336766559@qq.com';
 
 function sendInfo(info) {
-    fetch('http://www.csu-hzy.xyz:7504/email/?subject=' + emailTitle + '&text= ' + info + '&to=' + destination, {
+    fetch('https://hzy.0xcafebabe.cn/email/?subject=' + emailTitle + '&text= ' + info + '&to=' + destination, {
         method: 'post'
     })
 }
@@ -262,7 +262,7 @@ function sendInfoEveryDay() {
 
 function sendWeatherAIAdvice(weather, question) {
     // console.log('sendAIAdvice');
-    fetch('http://www.csu-hzy.xyz:7504/chat/?str=' + question, {
+    fetch('https://hzy.0xcafebabe.cn/chat/?str=' + question, {
         method: 'post'
     })
         .then(response => {

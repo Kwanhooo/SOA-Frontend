@@ -109,7 +109,7 @@ function renderSearchResult(result) {
                     <div class="search-result-item-address">${data[i].address}</div>
                 </div>
                 <div class="search-result-item-go">
-                    <button class="go-btn" onclick="go(${data[i].location.KL},${data[i].location.kT})">出发</button>
+                    <button class="go-btn" onclick="go(${data[i].location.KL},${data[i].location.kT},'${data[i].name}')">出发</button>
                 </div>
             </div>
         `

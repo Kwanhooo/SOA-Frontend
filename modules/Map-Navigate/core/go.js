@@ -11,7 +11,7 @@ function goByKeyword(to) {
     });
 }
 
-function go(lng, lat) {
+function go(lng, lat, name) {
     if (callingModeOn) {
         log.info('正在为您请求打车服务，请耐心等待...')
         setTimeout(() => {
@@ -68,6 +68,8 @@ function go(lng, lat) {
                 console.log('驾车路线', result)
                 if (status === 'complete') {
                     log.success('驾车路线规划完成', result)
+                    document.querySelector('#panel .start b').innerHTML = sessionStorage.getItem('address')
+                    document.querySelector('#panel .end b').innerHTML = name
                 } else {
                     log.error('获取驾车数据失败：' + result)
                 }
